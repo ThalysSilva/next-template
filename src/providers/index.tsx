@@ -1,5 +1,10 @@
+'use client';
 import React from 'react';
-import { ChakraProviderWrapper, QueryClientProviderWrapper } from './wrappers';
+import {
+  ChakraCacheProviderWrapper,
+  ChakraProviderWrapper,
+  QueryClientProviderWrapper,
+} from './wrappers';
 import { ProviderComponent, ProviderProps } from './types';
 
 const composeProviders = (...providers: ProviderComponent[]): ProviderComponent => {
@@ -13,5 +18,6 @@ const composeProviders = (...providers: ProviderComponent[]): ProviderComponent 
 
 export const Providers = composeProviders(
   QueryClientProviderWrapper,
+  ChakraCacheProviderWrapper,
   ChakraProviderWrapper,
 );

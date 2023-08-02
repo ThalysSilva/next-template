@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { QueryClient, QueryClientProvider, QueryClientProviderProps } from '@tanstack/react-query';
+
+import { CacheProvider, CacheProviderProps } from '@chakra-ui/next-js';
 import { ChakraProvider, ChakraProviderProps } from '@chakra-ui/react';
 import { ProviderProps } from './types';
 import { theme } from '@/styles/Theme';
@@ -31,4 +33,13 @@ export function ChakraProviderWrapper(props: ProviderProps) {
   };
 
   return <ChakraProvider {...ChakraProviderProps} />;
+}
+
+export function ChakraCacheProviderWrapper(props: ProviderProps) {
+  const { children } = props;
+  const ChakraProviderProps: CacheProviderProps = {
+    children,
+  };
+
+  return <CacheProvider {...ChakraProviderProps} />;
 }

@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "yarn husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --config .prettierrc.js --write \"src/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.0",
+    "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
