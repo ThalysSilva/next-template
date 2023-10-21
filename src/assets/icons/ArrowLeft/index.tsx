@@ -1,5 +1,6 @@
 import React from 'react';
 import colors from '../../../styles/Theme/colors';
+import { CustomIconProps } from '@/utils/types';
 
 const { secondary } = colors.brand;
 
