@@ -24,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <ReactQueryDevtools
             initialIsOpen={false}
-            panelProps={{ style: { background: '#094c79' } }}
           />
         </Providers>
       </body>
