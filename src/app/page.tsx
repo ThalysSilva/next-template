@@ -1,7 +1,8 @@
 'use client';
 
+import { Text5 } from '@/components/@shared/Texts';
 import React from 'react';
 
 export default function Home() {
-  return <main className="flex flex-col items-center"></main>;
+  return <Text5>{'olá mundo !!!'}</Text5>;
 }
