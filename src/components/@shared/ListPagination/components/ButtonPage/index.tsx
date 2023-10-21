@@ -1,4 +1,4 @@
-import { useButton } from '@/components/_shared/Button/hooks/useButton';
+import { useButton } from '@/components/@shared/Button/hooks/useButton';
 import colors from '@/styles/Theme/colors';
 import React from 'react';
 
