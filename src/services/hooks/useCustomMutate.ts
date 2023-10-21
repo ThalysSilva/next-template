@@ -1,33 +1,33 @@
-import { useQueryClient, useMutation, QueryKey } from '@tanstack/react-query';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { DefaultResponse, Params, RoutesName } from '../types';
 import useAxiosUtils from '@/utils/axios/hooks/useAxiosUtils';
 import { useMiddleware } from '../middleware/useMiddleware';
-import { ButtonProps } from '@/utils/types';
 import { AxiosError, AxiosRequestConfig } from 'axios';
+import { MutateOptions } from '@/@types/reactQuery';
 
 export type CustomMutationProps<T = any> = {
+  multiInvalidateQueriesKeys?: unknown[][];
   axiosConfig?: AxiosRequestConfig<any>;
-  invalidateQueriesKeys?: QueryKey;
+  invalidateQueriesKeys?: unknown[];
   onError?: (error: any) => void;
-  setQueriesKeys?: string[];
+  setQueriesKeys?: unknown[];
   onSuccess?: (data?: DefaultResponse<T>) => void;
   routeName: RoutesName;
   notHandleError?: boolean;
+  mutateOptions?: MutateOptions<DefaultResponse<T>, any, any, any>;
   onErrorOptions?: {
     customMessageError?: string;
-    actionButtons?: {
-      primary?: ButtonProps;
-      secondary?: ButtonProps;
-    };
   };
 };
 
 export function useCustomMutate<ReturnData, Payload = any>({
+  multiInvalidateQueriesKeys,
   invalidateQueriesKeys,
   onErrorOptions = {},
   axiosConfig = {},
   notHandleError,
   setQueriesKeys,
+  mutateOptions,
   routeName,
   ...statusFunctions
 }: CustomMutationProps<ReturnData>) {
@@ -37,17 +37,20 @@ export function useCustomMutate<ReturnData, Payload = any>({
 
   function onError(error: AxiosError<any>) {
     if (!notHandleError) {
-      handleAxiosError(error, {
-        customMessage: onErrorOptions.customMessageError,
-        actionButtons: onErrorOptions.actionButtons,
-      });
+      handleAxiosError(error);
     }
 
     statusFunctions.onError?.(error);
   }
 
   function onSuccess(data: DefaultResponse<ReturnData>) {
-    queryClient.invalidateQueries(invalidateQueriesKeys);
+    queryClient.invalidateQueries({
+      queryKey: invalidateQueriesKeys,
+      refetchType: 'all',
+    });
+    multiInvalidateQueriesKeys?.forEach((key) => {
+      queryClient.invalidateQueries({ queryKey: key, refetchType: 'all' });
+    });
     if (setQueriesKeys) queryClient.setQueryData(setQueriesKeys, data);
     statusFunctions.onSuccess?.(data);
   }
@@ -61,8 +64,10 @@ export function useCustomMutate<ReturnData, Payload = any>({
     }).then((res) => res.data);
   }
 
-  return useMutation(handleMutate, {
-    onSuccess: (data) => onSuccess(data),
+  return useMutation({
+    mutationFn: handleMutate,
+    ...mutateOptions,
+    onSuccess,
     onError,
   });
 }
