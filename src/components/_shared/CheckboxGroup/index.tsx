@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ComponentProps, ReactNode } from 'react';
 
 import { InputCheckbox } from '../CustomInputs/InputCheckbox';

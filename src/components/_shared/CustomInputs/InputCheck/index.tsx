@@ -1,3 +1,5 @@
+'use client';
+
 import { doNothing } from '@/utils/functions/general';
 import React from 'react';
 import CheckedIcon from '@/assets/icons/Checked';

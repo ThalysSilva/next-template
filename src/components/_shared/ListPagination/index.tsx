@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, SetStateAction } from 'react';
 
 import { useListPagination } from './hooks/useListPagination';

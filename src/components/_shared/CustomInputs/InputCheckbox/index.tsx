@@ -1,3 +1,6 @@
+'use client';
+
+
 import React, { ReactNode, useEffect, useState } from 'react';
 
 import { doNothing } from '@/utils/functions/general';

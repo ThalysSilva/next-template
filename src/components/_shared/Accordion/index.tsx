@@ -1,7 +1,8 @@
+'use client';
+
 import React from 'react';
 
 import { AccordionObject } from './types';
-import { Icon } from './components/icons';
 import { Text3 } from '../Texts';
 import {
   Accordion as AccordionChakra,
@@ -9,13 +10,14 @@ import {
   AccordionPanel,
   AccordionItem,
 } from '@chakra-ui/react';
+import { Icon } from './components/Icons';
 
 type Props = {
   items: AccordionObject[];
-  titleClassname?:string;
+  titleClassName?:string;
 };
 
-export function Accordion({ items, titleClassname }: Props) {
+export function Accordion({ items, titleClassName }: Props) {
   return (
     <AccordionChakra allowMultiple>
       {items.map(
@@ -26,7 +28,7 @@ export function Accordion({ items, titleClassname }: Props) {
                 return (
                   <div className=" w-full justify-between">
                     <AccordionButton className="flex w-full justify-between items-center gap-3">
-                      <Text3 className={titleClassname ?? 'flex-1 items-center text-text-primary text-start font-bold xl:text-lg'}>
+                      <Text3 className={titleClassName ?? 'flex-1 items-center text-text-primary text-start font-bold xl:text-lg'}>
                         {title || contentTitle}
                       </Text3>
                       <Icon

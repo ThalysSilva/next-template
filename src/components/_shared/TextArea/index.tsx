@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { RegisterOptions } from 'react-hook-form';

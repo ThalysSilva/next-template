@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ChangeEvent } from 'react';
 
 import { CustomRadioProps, InputRadio } from '../CustomInputs/InputRadio';

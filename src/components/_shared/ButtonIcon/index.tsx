@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useButton } from '../Button/hooks/useButton';
 
