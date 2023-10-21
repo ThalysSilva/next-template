@@ -1,18 +1,9 @@
-import { inputAnatomy } from '@chakra-ui/anatomy';
+import { selectAnatomy } from '@chakra-ui/anatomy';
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
 
 const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(
-  inputAnatomy.keys,
+  selectAnatomy.keys,
 );
-
-const flushed = definePartsStyle({
-  field: {
-    borderBottomWidth: 2,
-    borderColor: 'brand.secondary',
-    color: 'text.primary',
-    focusBorderColor: 'brand.secondary',
-  },
-});
 
 const outline = definePartsStyle({
   field: {
@@ -28,6 +19,8 @@ const filled = definePartsStyle({
     _readOnly: {
       borderColor: 'borderColor.light',
       backgroundColor: 'neutral.100',
+      color: 'text.text.light',
+      fontWeight: 'semibold',
     },
     _active: {
       borderColor: 'borderColor.light',
@@ -37,12 +30,8 @@ const filled = definePartsStyle({
   },
 });
 
-export const inputTheme = defineMultiStyleConfig({
-  defaultProps: {
-    variant: 'flushed',
-  } as any,
+export const selectTheme = defineMultiStyleConfig({
   variants: {
-    flushed,
     outline,
     filled,
   },
