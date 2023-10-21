@@ -12,6 +12,7 @@ function validateEnvs(envs: Record<string, string | undefined>) {
 function getEnvs() {
   const envs = {
     baseUrlApi: process.env.NEXT_PUBLIC_BASE_URL_API!,
+    secretKey: process.env.NEXT_PUBLIC_SECRET_KEY!,
   };
 
   validateEnvs(envs);
@@ -19,6 +20,5 @@ function getEnvs() {
   return envs;
 }
 
-const envs = getEnvs();
+export const envs = getEnvs();
 
-export default envs;

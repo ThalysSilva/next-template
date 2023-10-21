@@ -1,4 +1,4 @@
-const messages = {
+export const messages = {
   response: {
     error: {
       default: 'Problema com o serviço!',
@@ -30,4 +30,3 @@ const messages = {
   },
 };
 
-export default messages;

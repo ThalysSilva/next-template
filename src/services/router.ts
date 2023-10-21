@@ -8,5 +8,8 @@ export const apiRoutes = {
     uri: '/user/logout',
   },
 
+  // miscellaneous
+  getCep: { method: 'GET', uri: '/:cep/json/' },
+
 
 } as const;
