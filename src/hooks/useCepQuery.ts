@@ -1,3 +1,5 @@
+'use client';
+
 import { useCustomQuery } from '@/services/hooks/useCustomQuery';
 import { useFormSteps } from './useFormSteps';
 import { GetCepData } from '@/services/types/returnData';

@@ -1,3 +1,5 @@
+'use client';
+
 import { FieldValues, useFormContext } from 'react-hook-form';
 import config from '@/config';
 import { useRouter } from 'next/router';
