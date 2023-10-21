@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 import { useConfigsContext } from '@/contexts/Configs';
-import { MultiStepsFormObject, StepFormObject } from './types';
+import { MultiStepsFormObject, StepFormObject } from '../types';
 import { useSecureUtils } from '@/hooks/useSecureUtils';
 
 type Props<T extends string> = {

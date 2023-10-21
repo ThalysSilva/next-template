@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useMultiStepsForm } from './useMultiStepsForm';
+import { useMultiStepsForm } from './hooks/useMultiStepsForm';
 import { MultiStepsFormObject } from './types';
 import { CustomForm } from '../CustomForm';
 import { twMerge } from 'tailwind-merge';
