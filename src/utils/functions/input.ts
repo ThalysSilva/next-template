@@ -1,12 +1,12 @@
 import React from 'react';
-import { createMask } from 'imask';
+import { createMask, FactoryArg } from 'imask';
 import { UseFormReturn } from 'react-hook-form';
 import { iterateObject } from './object';
 import { ErrorHookForm, ErrorsHookForm } from '@/@types/hookForm';
 
 export function formatInput(
   event: React.ChangeEvent<HTMLInputElement>,
-  maskOptions: IMask.AnyMaskedOptions,
+  maskOptions: FactoryArg,
   hookFormMethods?: UseFormReturn,
 ) {
   const elementId = event.target.id;

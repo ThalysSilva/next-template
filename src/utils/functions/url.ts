@@ -1,4 +1,4 @@
-import { Params } from '@/service/types';
+import { Params } from '@/services/types';
 import { stringify } from 'qs';
 
 export function replaceParams(url: string, params: Params) {
