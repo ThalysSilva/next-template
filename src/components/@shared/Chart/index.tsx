@@ -13,7 +13,7 @@ type Props<T extends string> = {
 export function Chart<T extends string>({ data, linesIds, formatterTooltipValue }: Props<T>) {
   const { parentRef, parentSize, dataChart, secondaryColor } = useChart({ data, linesIds });
   return (
-    <div className="flex flex-1 w-full min-h-[100px]" ref={parentRef}>
+    <div className="flex min-h-[100px] w-full flex-1" ref={parentRef}>
       <LineChart width={parentSize.width} height={parentSize.height} data={dataChart}>
         <CartesianGrid horizontal={false} strokeDasharray="2" />
         <XAxis
@@ -23,9 +23,7 @@ export function Chart<T extends string>({ data, linesIds, formatterTooltipValue 
           interval={'equidistantPreserveStart'}
         />
         <YAxis hide />
-        <Tooltip
-          formatter={formatterTooltipValue}
-        />
+        <Tooltip formatter={formatterTooltipValue} />
         {linesIds.map((lineId) => (
           <Line
             key={lineId}

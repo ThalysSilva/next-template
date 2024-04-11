@@ -9,19 +9,19 @@ import { FormProvider } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
 
-type Props = {
+type Props<T extends Record<string, any>> = {
   children:
     | ReactNode
     | ((props: { currentError?: string; formContext: UseFormReturn }) => ReactNode);
   useFormProps?: Omit<UseFormProps, 'resolver'>;
-  onSubmit: (data: any) => void | Promise<void>;
-  onError?: SubmitErrorHandler<any>;
-  zodSchema?: z.ZodSchema<any>;
+  onSubmit: (data: T) => void | Promise<void>;
+  onError?: SubmitErrorHandler<T>;
+  zodSchema?: z.ZodSchema<T>;
   resetOnSubmit?: boolean;
   classNameForm?: string;
 };
 
-export function CustomForm({
+export function CustomForm<T extends Record<string, any>>({
   onSubmit: onSubmitProp,
   resetOnSubmit = false,
   classNameForm = '',
@@ -29,10 +29,10 @@ export function CustomForm({
   zodSchema,
   children,
   onError,
-}: Props) {
+}: Props<T>) {
   const { methods } = useCustomForm({ useFormProps, zodSchema });
 
-  async function onSubmit(data: any) {
+  async function onSubmit(data: T) {
     await onSubmitProp(data);
     if (resetOnSubmit) methods.reset(undefined, { keepIsSubmitted: false });
   }

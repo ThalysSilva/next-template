@@ -68,7 +68,7 @@ export function CheckboxGroup<OptionValue extends string, OptionType extends Opt
 
   return (
     <div className={`flex  flex-col ${classNameContainer}`}>
-      <div className="flex gap-3 justify-center w-fit items-center">
+      <div className="flex w-fit items-center justify-center gap-3">
         <When value={label}>
           <Text5 className="mb-1 text-text-semiLight">{label}</Text5>
         </When>

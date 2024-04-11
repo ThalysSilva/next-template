@@ -46,11 +46,11 @@ export function DefaultModal({
           padding: 24,
           maxWidth: '100%',
         }}
-        className={` flex flex-col bg-white items-center bg-white-full ease-linear transform transition-all duration-100 origin-bottom-center lg:origin-center 
+        className={` bg-white-full flex origin-bottom-center transform flex-col items-center bg-white transition-all duration-100 ease-linear lg:origin-center 
       ${activeEffects ? ' max-h-screen opacity-100' : ' max-h-0 opacity-0'}
       `}
       >
-        <div className="flex justify-between items-center w-full mb-5">
+        <div className="mb-5 flex w-full items-center justify-between">
           <When
             value={title}
             render={<span className={'font-bold text-brand-primary'}>{title}</span>}
@@ -64,13 +64,13 @@ export function DefaultModal({
           <button
             type="button"
             style={{ width: 20, height: 20 }}
-            className="flex justify-center items-center"
+            className="flex items-center justify-center"
             onClick={closeModal}
           >
             <CrossIcon height="15" width="15" fill={light} />
           </button>
         </div>
-        <div className={twMerge('flex flex-col w-full overflow-y-hidden flex-1', contentClassName)}>
+        <div className={twMerge('flex w-full flex-1 flex-col overflow-y-hidden', contentClassName)}>
           {children}
         </div>
       </div>

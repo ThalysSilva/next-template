@@ -21,7 +21,7 @@ export function Divider({
   return (
     <div
       style={{
-        backgroundColor: ChangeColor(color) ? '#006869' : color ,
+        backgroundColor: ChangeColor(color) ? '#006869' : color,
         boxSizing: 'border-box',
         margin: `${myPx.toString()}px ${mxPx.toString()}px`,
         height: `${sizePx.toString()}px`,
