@@ -65,7 +65,7 @@ export function Table<T extends DataItem>({
           const columnsRow = columnsConfig.map(({ keyName, render }, idx) => {
             const className = `
           ${columnsStyle?.find((item) => item.keyName === keyName)?.className ?? ''} 
-          ${(idx + 1) % 2 === 0 ? '' : colors.background.blueLight}
+          ${(idx + 1) % 2 === 0 ? '' : colors.background.primaryLight}
           `;
 
             const currentLabel = item[keyName].toString();

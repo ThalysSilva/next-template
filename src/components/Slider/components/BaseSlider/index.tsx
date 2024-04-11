@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { twMerge } from 'tailwind-merge';
 import colors from '@/styles/Theme/colors';
-import { When } from '@/components/@shared/When';
+import { When } from '@/components/When';
 
 export type BaseSliderProps = SliderChakraProps & {
   handleRightIconClick?: () => void;

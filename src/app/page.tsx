@@ -1,7 +1,7 @@
 'use client';
 
-import { Input } from '@/components/@shared/Input';
-import { Text5 } from '@/components/@shared/Texts';
+import { Input } from '@/components/Input';
+import { Text5 } from '@/components/Texts';
 import React from 'react';
 
 export default function Home() {

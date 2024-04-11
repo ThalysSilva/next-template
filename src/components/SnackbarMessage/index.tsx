@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-import { SnackbarProps } from '../../../contexts/Snackbar/types';
 import { useSnackbarMessage } from './hooks/useSnackbarMessage';
 import { CloseIcon } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/react';
+import { SnackbarProps } from '@/contexts/Snackbar/types';
 
 
 type Props = {

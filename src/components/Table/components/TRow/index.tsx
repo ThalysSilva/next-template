@@ -12,8 +12,8 @@ type Props<T> = {
   data?: any;
 };
 
-const { blueLight: secondary } = colors.background;
-export function TRow<T = string>({ columns, isOdd, alternateColor = secondary, className = '', renderEdit, data }: Props<T>) {
+const { primaryLight } = colors.background;
+export function TRow<T = string>({ columns, isOdd, alternateColor = primaryLight, className = '', renderEdit, data }: Props<T>) {
   const [active, setActive] = useState(false);
   const length = columns.reduce((acc, { columnSize }) => acc + (columnSize ?? 1), 0);
   const editable = (renderEdit && renderEdit() && active);

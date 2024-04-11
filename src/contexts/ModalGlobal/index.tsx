@@ -10,9 +10,9 @@ import React, {
 import { useBreakpointValue } from '@chakra-ui/react';
 import { ModalGlobalContextData } from './types';
 import colors from '@/styles/Theme/colors';
-import { When } from '@/components/@shared/When';
+import { When } from '@/components/When';
 import CrossIcon from '@/assets/icons/Cross';
-import { Modal } from '@/components/@shared/Modal';
+import { Modal } from '@/components/Modal';
 
 type ModalGlobalProviderProps = {
   children: ReactNode;

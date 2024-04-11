@@ -1,4 +1,4 @@
-import { SnackbarProps } from '../../../../contexts/Snackbar/types';
+import { SnackbarProps } from '@/contexts/Snackbar/types';
 import { useEffect, useState } from 'react';
 
 type Props = {

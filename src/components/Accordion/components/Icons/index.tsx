@@ -1,5 +1,5 @@
 import ArrowLeftIcon from '@/assets/icons/ArrowLeft';
-import { When } from '@/components/@shared/When';
+import { When } from '@/components/When';
 import React, { ReactNode } from 'react';
 
 type iconsProps = {

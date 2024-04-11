@@ -1,5 +1,5 @@
 import ArrowLeftIcon from '@/assets/icons/ArrowLeft';
-import { useButton } from '@/components/@shared/Button/hooks/useButton';
+import { useButton } from '@/components/Button/hooks/useButton';
 import colors from '@/styles/Theme/colors';
 import React from 'react';
 

@@ -8,8 +8,8 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { twMerge } from 'tailwind-merge';
-import { When } from '@/components/@shared/When';
-import { Text5 } from '@/components/@shared/Texts';
+import { When } from '@/components/When';
+import { Text5 } from '@/components/Texts';
 
 export type BaseInputProps = InputChakraProps & {
   handleRightIconClick?: () => void;

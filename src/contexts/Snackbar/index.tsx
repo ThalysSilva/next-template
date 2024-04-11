@@ -1,8 +1,8 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { SnackbarProps, SnackbarData, SnackbarContextData } from './types';
 import { doNothing } from '../../utils/functions/general';
-import { When } from '@/components/@shared/When';
-import { SnackbarMessage } from '@/components/@shared/SnackbarMessage';
+import { When } from '@/components/When';
+import { SnackbarMessage } from '@/components/SnackbarMessage';
 
 export const SnackbarContext = createContext({
   dispatchSnackbar: doNothing,
