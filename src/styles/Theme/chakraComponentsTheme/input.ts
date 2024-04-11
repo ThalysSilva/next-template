@@ -8,18 +8,31 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 const flushed = definePartsStyle({
   field: {
     borderBottomWidth: 2,
-    borderColor: 'brand.secondary',
+    borderColor: 'brand.secondaryLight',
     color: 'text.primary',
-    focusBorderColor: 'brand.secondary',
+    focusBorderColor: 'brand.secondaryLight',
+    _focus: {
+      borderColor: 'brand.secondaryLight',
+      boxShadow:
+        '0 4px 4px -4px var(--chakra-colors-brand-secondaryLight),  inset 0 -6px 4px -7px var(--chakra-colors-brand-secondaryLight)',
+    },
   },
 });
 
 const outline = definePartsStyle({
   field: {
-    borderColor: 'borderColor.light',
+    borderColor: 'borderColor.secondaryLight',
     color: 'text.text.light',
-    borderRadius: 6,
-    focusBorderColor: 'borderColor.light',
+    borderRadius: 8,
+    borderWidth: 1,
+    focusBorderColor: 'borderColor.secondaryLight',
+    _focus: {
+      borderColor: 'borderColor.secondary',
+      boxShadow: '0 0 0 1px var(--chakra-colors-borderColor-secondaryLight)',
+    },
+    _active: { borderColor: 'borderColor.secondaryLight' },
+    _hover: { borderColor: 'borderColor.secondaryLight' },
+    _focusVisible: { outline: 'none' },
   },
 });
 

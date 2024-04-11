@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const primaryColor = '#006869';
-const primaryLightColor = '#48A1B0';
-const secondaryColor = '#FFCB05';
+const primaryColor = '#AC41C5';
+const primaryLightColor = '#C75FDC';
+const secondaryColor = '#AAB4C5';
+const secondaryLightColor = '#E1E6ED';
 const whiteColor = '#FFFFFF';
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
     primary: primaryColor,
     primaryLight: primaryLightColor,
     secondary: secondaryColor,
+    secondaryLight: secondaryLightColor,
     white: whiteColor,
   },
   aux: {
@@ -26,20 +28,20 @@ module.exports = {
     gold: '#E39703',
   },
   background: {
-    blueLight: '#36A1AC1A',
-    yellowLight: '#FEE27833',
+    primary: '#18181B',
+    primaryLight: '#E1E6ED',
   },
   divider: { green: '#3AC658' },
   borderColor: {
     primary: '#1e1e1e66',
-    secondary: '#36A1AC',
+    secondary: secondaryColor,
     light: '#E3E3E8',
-    secondaryLight: '#36A1AC0D',
+    secondaryLight: secondaryLightColor,
   },
   text: {
-    primary: '#646981',
-    semiLight: '#4D5163',
-    light: '#7C8096',
+    primary: '#E3E3E8',
+    semiLight: '#E1E6ED',
+    light: '#FFFFFF',
     placeholder: '#B0B3C0',
   },
   table: {
