@@ -1,49 +1,43 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { DefaultResponse, Params, RoutesName } from '../types';
-import useAxiosUtils from '@/utils/axios/hooks/useAxiosUtils';
 import { useMiddleware } from '../middleware/useMiddleware';
 import { AxiosError, AxiosRequestConfig } from 'axios';
-import { MutateOptions } from '@/@types/reactQuery';
+import { Params, RoutesName } from '../types';
+import useAxiosUtils from '../../utils/axios/hooks/useAxiosUtils';
+import { MutateOptions } from '../../@types/reactQuery';
 
 export type CustomMutationProps<T = any> = {
+  mutateOptions?: MutateOptions<T, any, any, any>;
   multiInvalidateQueriesKeys?: unknown[][];
+  onError?: (error: AxiosError<T>) => void;
   axiosConfig?: AxiosRequestConfig<any>;
   invalidateQueriesKeys?: unknown[];
-  onError?: (error: any) => void;
+  onSuccess?: (data?: T) => void;
+  showSnackbarOnError?: boolean;
   setQueriesKeys?: unknown[];
-  onSuccess?: (data?: DefaultResponse<T>) => void;
   routeName: RoutesName;
-  notHandleError?: boolean;
-  mutateOptions?: MutateOptions<DefaultResponse<T>, any, any, any>;
-  onErrorOptions?: {
-    customMessageError?: string;
-  };
 };
 
 export function useCustomMutate<ReturnData, Payload = any>({
   multiInvalidateQueriesKeys,
   invalidateQueriesKeys,
-  onErrorOptions = {},
+  showSnackbarOnError = true,
   axiosConfig = {},
-  notHandleError,
   setQueriesKeys,
   mutateOptions,
   routeName,
   ...statusFunctions
 }: CustomMutationProps<ReturnData>) {
+  const { handleAxiosError } = useAxiosUtils();
   const { requestAxios } = useMiddleware();
   const queryClient = useQueryClient();
-  const { handleAxiosError } = useAxiosUtils();
 
-  function onError(error: AxiosError<any>) {
-    if (!notHandleError) {
-      handleAxiosError(error);
-    }
+  function onError(error: AxiosError<ReturnData, null>) {
+    if (showSnackbarOnError) handleAxiosError(error);
 
     statusFunctions.onError?.(error);
   }
 
-  function onSuccess(data: DefaultResponse<ReturnData>) {
+  function onSuccess(data: ReturnData) {
     queryClient.invalidateQueries({
       queryKey: invalidateQueriesKeys,
       refetchType: 'all',
@@ -55,13 +49,14 @@ export function useCustomMutate<ReturnData, Payload = any>({
     statusFunctions.onSuccess?.(data);
   }
 
-  function handleMutate({ payload, params }: { payload?: Payload; params?: Params }) {
-    return requestAxios<DefaultResponse<ReturnData>, typeof payload>({
+  async function handleMutate({ payload, params }: { payload?: Payload; params?: Params }) {
+    const { data } = await requestAxios<ReturnData, typeof payload>({
       config: axiosConfig,
       routeName,
       payload,
       params,
-    }).then((res) => res.data);
+    });
+    return data;
   }
 
   return useMutation({
