@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </Head>
       <body>
         <Providers>
-          <main className="flex flex-col items-center w-full">{children}</main>
+          <main className="flex w-full flex-col items-center bg-background-primary">{children}</main>
           <ReactQueryDevtools initialIsOpen={false} />
         </Providers>
       </body>
