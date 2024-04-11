@@ -6,7 +6,6 @@
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",
-    "prettier",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -30,7 +29,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "unused-imports", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "unused-imports"],
   "rules": {
     "quotes": [
       "warn",
@@ -72,11 +71,7 @@
       {
         "SwitchCase": 1,
         "MemberExpression": 2,
-        "ignoredNodes": [
-          "ConditionalExpression > *",
-          "MemberExpression",
-          "TemplateLiteral > *"
-        ]
+        "ignoredNodes": ["ConditionalExpression > *", "MemberExpression", "TemplateLiteral > *"]
       }
     ],
     "max-len": [
