@@ -1,34 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Meu template next
 
-## Getting Started
+Decidi compartilhar minha experiência que adquiri em vários projetos que eu ja frequentei. Adaptei e montei um template que geralmente utilizo para iniciar um grande projeto.
 
-First, run the development server:
+### Tecnologias utilizadas:
+- Next.js v14
+- Chakra Ui
+- React hook form
+- Zod
+- Axios
+- React query v5
+- Tailwind
+- Tailwind-merge
+- Eslint
+- Prettier
+- Typescript
+- Jest
+- Husky
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Definição de arquitetura do projeto
+- O projeto foi definido para ser utilizado de acordo com o pattern design sugerido pela docs do próprio next. Todos os arquivos com questões específicas de cada página (customHooks, constantes e componentes) serão armazenados nos respectivos diretório dento da pasta App.
+- Já existe uma predefinição de regras de lint e prettier que são ao meu agrado para seguir com um bom clean code.
+- O projeto tem a implementação de uma camada de serviço utilizando o axios para gerenciamento de requisição rest e react query para gerenciamento de cache. Dentro das pastas services, há uma pasta de hooks (useCustomQuery e useCustomMutate) contendo abstrações para utilização da implementação de ambos, com intuito de facilitar a criação de novas camadas de serviço.
+
+exemplo de utilização:
+```
+export function useAddCreditCardServices() {
+  const addCreditCardMutation = useCustomMutate<
+    AddCreditCardData,
+    AddCreditCardDataPayload
+  >({
+    routeName: 'addCreditCard',
+    invalidateQueriesKeys: ['cardList'],
+    showSnackbarOnError: false,
+  });
+
+  return {addCreditCardMutation};
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Dentro de cada componente/pagina poderá ter os arquivos index.tsx, const.ts, types.d.ts, (layout.tsx|page.tsx caso seja pagina) Também poderá ter a pasta de hooks, para a inserção da camada lógica, como também da camada de serviço. Também poderá ter a pasta components, caso precisem de algum outro compoente específico para aquele componente ou pagina exemplo:
+```
+AddCreditCard
+│   index.tsx
+│   const.ts
+|   types.d.ts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+└───components
+│   └───AddCreditCardFormContent
+│       │   index.tsx
+│       │   (... estrutura recursiva ...)
+│   
+└───hooks
+|   │   useAddCreditCard.(ts|tsx)
+|   │   useAddCreditCardServices.ts
+```
+  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+### Definição de cada pasta dento da src:
+- @types: tipagens gerais
+- app: pasta padrão para roteamento do Next.js
+- components: componentes que podem ser reutilizados em outras oportunidades, geralmente sempre tenho que utilizar nos meus projetos.
+- config: local onde crio estruturas para configuração, definição de variaveis de ambientes, link de roteamento centralizados, entre outros.
+- contexts: localização dos contextos necessários para a funcionalidade do projeto
+- hooks: quando um hook pode ser utilizado em geralmente mais de um componente, ele é armazenado aqui.
+- providers: aqui é gerenciado todos os providers que envolvem a aplicação.
+- schemas: todos os schemas do zod são armazenados aqui.
+- services: aqui é a parte central das camadas de serviço. dentro da services, há o route.ts que serve para alimentar as opções do routerName dentro dos useCustomMutate e useCustomQuery. Também é onde é armazenado camadas de serviço caso sejam utilizados em mais de um lugar. Também pode armazenar as tipagens de cada camada de serviço de um respectivo grupo (usuários, cartões, eventos, etc...)
+- styles: local para a configuração e armazenamento das variaveis de estilização do projeto, como o css global que é importado pela aplicação.
+- utils: funções e hooks para utilidades gerais um dos exemplos são máscaras de dados e tratamento de datas.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Falta implementar
+- Testes unitários
+- Exemplos da utilização da arquitetura de serviço
+- Paginas para exemplificação dos componentes genéricos
+- Exemplo de formulário utilizando as abstrações do react hook form (componente customForm)
+- Criação de um arquivo padrão para configuração do husky
+- Ideias sempre são bem vindas !!
