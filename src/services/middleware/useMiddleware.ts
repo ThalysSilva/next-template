@@ -3,7 +3,7 @@ import { mountUrl } from '@/utils/functions/url';
 import Axios, { AxiosRequestConfig } from 'axios';
 import { Params, RoutesName } from '../types';
 import { apiRoutes } from '../router';
-import { baseUrl } from '@/constants/service';
+import { baseUrl } from '@/config/service';
 
 type RequestAxiosProps<PayloadType> = {
   selectedApi?: keyof typeof baseUrl;

@@ -1,4 +1,4 @@
-import { selectedTokenName } from '../../constants/service';
+import { selectedTokenName } from '../../config/service';
 import { AxiosInstance } from 'axios';
 import { parseCookies } from 'nookies';
 

@@ -1,7 +1,7 @@
 import { Params, RoutesName } from '../types';
 import { useMiddleware } from '../middleware/useMiddleware';
 import { QueryOptions } from '@/@types/reactQuery';
-import { baseUrl } from '@/constants/service';
+import { baseUrl } from '@/config/service';
 import { useQuery } from '@tanstack/react-query';
 
 export type CustomQueryProps<T> = {
